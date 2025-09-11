@@ -1,0 +1,26 @@
+{
+	"name": "adventure-engine-cli",
+	"version": "1.0.0",
+	"description": "A CLI game engine (and game) made with NodeJS",
+	"main": "index.js",
+	"scripts": {
+		"clear": "npx rimraf dist",
+		"build": "npm run clear && tsc",
+		"dev": "npm run build && node dist/program.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/VonRiddarn/adventure-engine-cli.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/VonRiddarn/adventure-engine-cli/issues"
+	},
+	"homepage": "https://github.com/VonRiddarn/adventure-engine-cli#readme",
+	"devDependencies": {
+		"@types/node": "^24.3.1",
+		"typescript": "^5.9.2"
+	}
+}
