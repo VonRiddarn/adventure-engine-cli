@@ -1,6 +1,6 @@
 type Resettable<T> = {
 	value: T;
-	default: T;
+	readonly default: T;
 	consume: () => T;
 };
 
@@ -11,15 +11,8 @@ export const createResettable = <T>(initial: T): Resettable<T> => {
 	const def = initial;
 
 	return {
-		get value() {
-			return value;
-		},
-		set value(v: T) {
-			value = v;
-		},
-		get default() {
-			return def;
-		},
+		value,
+		default: def,
 		consume: () => {
 			const current = value;
 			value = def;
