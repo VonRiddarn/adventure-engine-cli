@@ -1,4 +1,5 @@
 import readline from "readline/promises";
+import type { MenuOption } from "../types/menu-option.js";
 
 export const BACK = "b";
 export const QUIT = "q";
@@ -8,35 +9,23 @@ const rl = readline.createInterface({
 	output: process.stdout,
 });
 
-type enforceInputOptions = {
-	validLength: number;
-	allowBack?: boolean;
-	allowQuit?: boolean;
-};
+export const getEnforcedInput = async (question: string, options: MenuOption[]): Promise<string> => {
+	if (options.length <= 0) throw new Error("Options cannot be empty!");
 
-export const getEnforcedInput = async (
-	question: string,
-	{ validLength, allowBack = false, allowQuit = false }: enforceInputOptions
-): Promise<string> => {
-	if (validLength <= 0) throw new Error("validLength must be greater than 0!");
+	const optionsNormalized = options.map((o) => o.key.toLowerCase().trim());
+	let tries = 0;
+
 	while (true) {
-		const sa = (await rl.question(question)).toLowerCase().trim();
-		let na = Number.parseInt(sa);
+		const answer = (await rl.question(question)).toLowerCase().trim();
 
-		if (Number.isNaN(na)) {
-			if ((sa === BACK.toLowerCase() && allowBack) || (sa === QUIT.toLowerCase() && allowQuit))
-				return sa;
-			else {
-				console.log(`Answer must be a number between 1 and ${validLength}!`);
-				continue;
-			}
-		}
+		if (!optionsNormalized.includes(answer)) {
+			tries++;
+			console.log(`Invalid input.`);
 
-		if (na < 1 || na > validLength) {
-			console.log(`Answer must be a number between 1 and ${validLength}!`);
+			if (tries % 3 == 0) console.log(`Allowed inputs: ${optionsNormalized}`);
 			continue;
 		}
 
-		return sa;
+		return answer;
 	}
 };
