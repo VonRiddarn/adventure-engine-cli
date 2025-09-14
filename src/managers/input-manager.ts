@@ -9,6 +9,8 @@ const rl = readline.createInterface({
 	output: process.stdout,
 });
 
+export const closeInputManager = () => rl.close();
+
 export const getEnforcedInput = async (question: string, options: MenuOption[]): Promise<string> => {
 	if (options.length <= 0) throw new Error("Options cannot be empty!");
 

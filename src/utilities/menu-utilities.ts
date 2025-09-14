@@ -1,6 +1,6 @@
 import type { Menu } from "../types/menu.js";
 
-export const enterMenu = (menu: Menu) => {
+export const enterMenu = async (menu: Menu) => {
 	menu.enter();
-	while (menu.update()) {}
+	while (await menu.update()) {}
 };

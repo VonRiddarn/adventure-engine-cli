@@ -1,3 +1,4 @@
+import { getEnforcedInput } from "../managers/input-manager.js";
 import type { MenuOption } from "../types/menu-option.js";
 import type { Menu } from "../types/menu.js";
 
@@ -13,8 +14,10 @@ const MainMenu = (): Menu => {
 		console.log("Oh, guess I'm in!");
 	};
 
-	const update = (): boolean => {
-		console.log("Nah, Imma head out.");
+	const update = async (): Promise<boolean> => {
+		let a = await getEnforcedInput("Choose an option: ", options);
+		console.log(a);
+		console.log("I'm done, bye bro!");
 		return false;
 	};
 
