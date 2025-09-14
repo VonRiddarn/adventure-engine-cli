@@ -1,4 +1,4 @@
-import { getEnforcedInput } from "../managers/input-manager.js";
+import { closeInputManager, getEnforcedInput } from "../managers/input-manager.js";
 import type { MenuOption } from "../types/menu-option.js";
 import type { Menu } from "../types/menu.js";
 import { enterMenu } from "../utilities/menu-utilities.js";
@@ -6,10 +6,16 @@ import SubMenu from "./SubMenu.js";
 
 const MainMenu = (): Menu => {
 	const options: MenuOption[] = [
-		{ key: "1", label: "Option 1", action: () => {} },
-		{ key: "2", label: "Option 2", action: () => {} },
-		{ key: "3", label: "Option 3", action: () => {} },
-		{ key: "4", label: "Option 3", action: () => {} },
+		{ key: "1", label: "New game", action: () => {} },
+		{ key: "2", label: "Load game", action: () => {} },
+		{
+			key: "q",
+			label: "Exit",
+			action: () => {
+				closeInputManager();
+				process.exit();
+			},
+		},
 	];
 
 	const enter = () => {
