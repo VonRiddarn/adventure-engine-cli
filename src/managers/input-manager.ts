@@ -31,3 +31,7 @@ export const getEnforcedInput = async (question: string, options: MenuOption[]):
 		return answer;
 	}
 };
+
+export const pressEnterToContinue = async () => {
+	await rl.question("Press ENTER to continue...");
+};
