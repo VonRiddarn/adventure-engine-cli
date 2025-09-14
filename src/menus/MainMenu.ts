@@ -32,6 +32,7 @@ const MainMenu = (): Menu => {
 	};
 
 	const update = async (): Promise<boolean> => {
+		console.log("== MAIN MENU ==");
 		renderer.listOptions(options);
 
 		let a = await getEnforcedInput("Choose an option: ", options);

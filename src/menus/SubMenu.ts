@@ -8,7 +8,7 @@ const SubMenu = (): Menu => {
 		{ key: "1", label: "Jar of pickles", action: () => true },
 		{ key: "2", label: "Big muscle juice", action: () => true },
 		{ key: "3", label: "Green goo", action: () => true },
-		{ key: "b", label: "Green goo", action: () => false },
+		{ key: "b", label: "Go back", action: () => false },
 	];
 
 	const enter = () => {
@@ -22,11 +22,21 @@ const SubMenu = (): Menu => {
 	};
 
 	const update = async (): Promise<boolean> => {
+		console.log("== SHOPKEEPER ==");
 		renderer.listOptions(options);
 		let a = await getEnforcedInput("What would you like to buy? : ", options);
-		console.log(`Excellent choice! Here is your ${options.filter((o) => o.key == a)[0]?.label}`);
-		await pressEnterToContinue();
-		return false;
+		const chosen = options.find((o) => o.key === a);
+		if (chosen) {
+			const ca = await chosen.action();
+			if (ca) {
+				console.log(`Excellent choice! Here is your ${options.filter((o) => o.key == a)[0]?.label}`);
+				await pressEnterToContinue();
+			}
+
+			return ca;
+		}
+
+		return true;
 	};
 
 	return { enter, update, exit };
