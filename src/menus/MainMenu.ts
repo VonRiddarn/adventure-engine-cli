@@ -14,14 +14,17 @@ const MainMenu = (): Menu => {
 		console.log("Oh, guess I'm in!");
 	};
 
+	const exit = () => {
+		console.log("Aight, Imma head.");
+	};
+
 	const update = async (): Promise<boolean> => {
 		let a = await getEnforcedInput("Choose an option: ", options);
-		console.log(a);
-		console.log("I'm done, bye bro!");
+		console.log(`Well done, bro. You chose: ${a}`);
 		return false;
 	};
 
-	return { enter, update };
+	return { enter, update, exit };
 };
 
 export default MainMenu;
