@@ -1,5 +1,5 @@
 import { closeInputManager, getEnforcedInput } from "./managers/input-manager.js";
-import MainMenu from "./menus/main-menu.js";
+import MainMenu from "./menus/MainMenu.js";
 import { enterMenu } from "./utilities/menu-utilities.js";
 
 console.log("Hello world");
