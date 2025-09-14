@@ -7,3 +7,8 @@ export const listOptions = (options: MenuOption[]) => {
 		console.log(formatOption(o));
 	});
 };
+
+export const newFrame = () => {
+	console.clear();
+	// Show UI.
+};

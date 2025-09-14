@@ -1,6 +1,7 @@
-import { getEnforcedInput } from "../managers/input-manager.js";
+import { getEnforcedInput, pressEnterToContinue } from "../managers/input-manager.js";
 import type { MenuOption } from "../types/menu-option.js";
 import type { Menu } from "../types/menu.js";
+import * as renderer from "../utilities/renderer.js";
 
 const SubMenu = (): Menu => {
 	const options: MenuOption[] = [
@@ -21,8 +22,10 @@ const SubMenu = (): Menu => {
 	};
 
 	const update = async (): Promise<boolean> => {
+		renderer.listOptions(options);
 		let a = await getEnforcedInput("What would you like to buy? : ", options);
 		console.log(`Excellent choice! Here is your ${options.filter((o) => o.key == a)[0]?.label}`);
+		await pressEnterToContinue();
 		return false;
 	};
 

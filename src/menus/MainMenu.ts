@@ -3,6 +3,7 @@ import type { MenuOption } from "../types/menu-option.js";
 import type { Menu } from "../types/menu.js";
 import { enterMenu } from "../utilities/menu-utilities.js";
 import SubMenu from "./SubMenu.js";
+import * as renderer from "../utilities/renderer.js";
 
 const MainMenu = (): Menu => {
 	const options: MenuOption[] = [
@@ -31,6 +32,8 @@ const MainMenu = (): Menu => {
 	};
 
 	const update = async (): Promise<boolean> => {
+		renderer.listOptions(options);
+
 		let a = await getEnforcedInput("Choose an option: ", options);
 		console.log(`Well done, bro. You chose: ${a}`);
 
