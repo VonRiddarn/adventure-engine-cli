@@ -4,14 +4,15 @@ import type { Menu } from "../types/menu.js";
 
 const SubMenu = (): Menu => {
 	const options: MenuOption[] = [
-		{ key: "1", label: "Jar of pickles", action: () => {} },
-		{ key: "2", label: "Big muscle juice", action: () => {} },
-		{ key: "3", label: "Green goo", action: () => {} },
+		{ key: "1", label: "Jar of pickles", action: () => true },
+		{ key: "2", label: "Big muscle juice", action: () => true },
+		{ key: "3", label: "Green goo", action: () => true },
+		{ key: "b", label: "Green goo", action: () => false },
 	];
 
 	const enter = () => {
 		console.log("WOW! I'm a sub-menu! Maybe I'm like a shop or something!");
-		console.log("WOW! I'm a sub-menu! Yeah, let's go with that.");
+		console.log("Yeah, let's go with that.");
 	};
 
 	const exit = () => {
