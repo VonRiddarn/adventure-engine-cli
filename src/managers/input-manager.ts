@@ -1,8 +1,11 @@
 import readline from "readline/promises";
 import type { MenuOption } from "../types/menu-option.js";
+import { listOptions } from "../utilities/renderer.js";
 
 export const BACK = "b";
 export const QUIT = "q";
+
+const REMINDER_INTERVAL = 3;
 
 const rl = readline.createInterface({
 	input: process.stdin,
@@ -24,7 +27,11 @@ export const getEnforcedInput = async (question: string, options: MenuOption[]):
 			tries++;
 			console.log(`Invalid input.`);
 
-			if (tries % 3 == 0) console.log(`Allowed inputs: ${optionsNormalized}`);
+			// A little iffy because we're sharing responsibility - but we're not causing any side-effects.
+			if (tries % REMINDER_INTERVAL == 0) {
+				console.log("Available options:");
+				listOptions(options);
+			}
 			continue;
 		}
 
