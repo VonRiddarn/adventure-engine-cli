@@ -1,4 +1,4 @@
-import { closeInputManager, getEnforcedInput } from "./managers/input-manager.js";
+import { closeInputManager } from "./managers/input-manager.js";
 import MainMenu from "./menus/MainMenu.js";
 import { enterMenu } from "./utilities/menu-utilities.js";
 
