@@ -5,10 +5,12 @@ import * as renderer from "../utilities/renderer.js";
  */
 export const enterMenu = async (menu: Menu) => {
 	renderer.newFrame();
+
 	menu.enter();
+
 	while (await menu.update()) {
-		// TODO: Add cleanup here so that menus arent responsible of UI clearing.
 		renderer.newFrame();
 	}
+
 	menu.exit();
 };

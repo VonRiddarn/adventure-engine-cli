@@ -1,4 +1,4 @@
-import { closeInputManager, getEnforcedInput } from "../managers/input-manager.js";
+import { getEnforcedInput } from "../managers/input-manager.js";
 import type { MenuOption } from "../types/menu-option.js";
 import type { Menu } from "../types/menu.js";
 import { enterMenu } from "../utilities/menu-utilities.js";

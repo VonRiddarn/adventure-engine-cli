@@ -10,5 +10,5 @@ export const listOptions = (options: MenuOption[]) => {
 
 export const newFrame = () => {
 	console.clear();
-	// Show UI.
+	// TODO: Show UI.
 };
